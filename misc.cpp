@@ -791,7 +791,7 @@ void pre_process_arg(int argc, char *argv[])  // mainly for load conf file
     if (count > 0) {
         load_config(argv[pos + 1], new_argc, new_argv);
     }
-    char *new_argv_char[new_argv.size()];
+    vector<char *> new_argv_char(new_argv.size());
 
     new_argc = 0;
     for (i = 0; i < (int)new_argv.size(); i++) {
@@ -801,7 +801,7 @@ void pre_process_arg(int argc, char *argv[])  // mainly for load conf file
         }
         new_argv_char[new_argc++] = (char *)new_argv[i].c_str();
     }
-    process_arg(new_argc, new_argv_char);
+    process_arg(new_argc, new_argv_char.data());
 }
 #ifdef UDP2RAW_LINUX
 void *run_keep(void *none)  // called in a new thread for --keep-rule option
