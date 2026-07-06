@@ -1,0 +1,4 @@
+bin/
+git_version.h
+udp2raw_mac
+*.dSYM/
